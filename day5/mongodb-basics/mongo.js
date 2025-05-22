@@ -1,5 +1,7 @@
 const mongoose= require('mongoose');
-mongoose.connect('mongodb+srv://batcave11111:qdhzfaZ4bShPRLuW@cluster0.dedtjxc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(()=>{
+const dotenv=require('dotenv');
+dotenv.config();
+mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log("connected to mongodb");
 }).catch((err)=>{
     console.log("error connecting to mongodb",err);
@@ -35,13 +37,13 @@ async function runSample(){
     try{
         const newUser=await User.create({
             name:"robin tim",
-            email:"batcave12222@gmail.com",
+            email:"batcave222222@gmail.com",
             age:30,
             tags:["hero","vigilante"],
         });
         const updateUser=await User.findByIdAndUpdate(newUser._id,{
             name:"tim drake",
-            email:"robin@gmail.com",
+            email:"robin123@gmail.com",
         },{
             new:true,
         });
